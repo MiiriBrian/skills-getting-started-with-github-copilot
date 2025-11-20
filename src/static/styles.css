@@ -142,3 +142,111 @@ footer {
   padding: 20px;
   color: #666;
 }
+
+.participants-section {
+  margin-top: 12px;
+  padding: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+  border: 1px solid #e6eefc;
+  border-radius: 8px;
+}
+
+/* header */
+.participants-title {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #1a237e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.participants-title .count {
+  font-weight: 600;
+  color: #3949ab;
+  font-size: 13px;
+}
+
+/* list: keep it scrollable but show bullets via a custom marker so avatar + bullet don't overlap */
+.participants {
+  list-style: none; /* we render a custom bullet for consistent appearance across browsers */
+  padding: 0;
+  margin: 0;
+  max-height: 160px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* item: reserve left padding so the bullet and avatar have space, and keep flex layout for content */
+.participant-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 8px 8px 46px; /* left padding reserves room for the bullet */
+  border-radius: 6px;
+  background: rgba(58, 81, 255, 0.03);
+}
+
+/* custom bullet marker (acts as the list 'bullet') */
+.participant-item::before {
+  content: '•';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #3949ab;
+  font-size: 18px;
+  line-height: 1;
+  opacity: 0.95;
+}
+
+/* avatar remains as-is but now sits to the right of the bullet */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #3949ab 0%, #1a237e 100%);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex: 0 0 36px;
+  margin-left: 0; /* ensure avatar sits directly after the reserved padding */
+}
+
+/* keep name/email styles unchanged */
+.participant-text {
+  font-weight: 600;
+  color: #1a237e;
+  font-size: 14px;
+}
+.participant-email {
+  font-size: 13px;
+  color: #555;
+  margin-left: 6px;
+  opacity: 0.9;
+}
+
+/* subtle scrollbar for large lists */
+.participants::-webkit-scrollbar {
+  height: 6px;
+  width: 8px;
+}
+.participants::-webkit-scrollbar-thumb {
+  background: rgba(58, 81, 255, 0.15);
+  border-radius: 6px;
+}
+.participants::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Improve contrast for the "No participants yet" info within the section */
+.participants-section .info {
+  margin: 0;
+  padding: 8px 0;
+  font-size: 14px;
+}

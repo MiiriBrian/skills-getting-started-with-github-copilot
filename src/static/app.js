@@ -23,10 +23,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
-        // show participants
-        const participantsHtml = details.participants.length
-          ? `<ul class="participants">${details.participants.map(p => `<li>${p}</li>`).join('')}</ul>`
-          : `<p class="info">No participants yet</p>`;
+        // show participants (titled section with avatars and bulleted list)
+        let participantsHtml;
+        if (details.participants.length) {
+          const listItems = details.participants
+            .map(p => {
+              const namePart = p.split('@')[0].replace(/[._\-]/g, ' ');
+              const initials = namePart
+                .split(' ')
+                .map(s => (s ? s[0].toUpperCase() : ''))
+                .join('')
+                .slice(0, 2);
+              return `<li class="participant-item">
+                        <span class="avatar">${initials}</span>
+                        <span class="participant-text">${namePart}</span>
+                        <span class="participant-email">${p}</span>
+                      </li>`;
+            })
+            .join('');
+          participantsHtml = `<div class="participants-section">
+               <h5 class="participants-title">Participants <span class="count">(${details.participants.length})</span></h5>
+               <ul class="participants">
+                 ${listItems}
+               </ul>
+             </div>`;
+        } else {
+          participantsHtml = `<div class="participants-section">
+               <h5 class="participants-title">Participants</h5>
+               <p class="info">No participants yet</p>
+             </div>`;
+        }
 
         activityCard.innerHTML = `
           <h4>${name}</h4>
