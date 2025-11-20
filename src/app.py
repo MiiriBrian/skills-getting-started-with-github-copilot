@@ -44,7 +44,7 @@ activities = {
         "schedule": "Mondays, Wednesdays, Fridays, 4:00 PM - 6:00 PM",
         "max_participants": 22,
         "participants": ["liam@mergington.edu", "noah@mergington.edu"]
-    },
+    }, 
     "Basketball Club": {
         "description": "Pickup games, skills training, and intramural competition",
         "schedule": "Tuesdays and Thursdays, 5:00 PM - 7:00 PM",
