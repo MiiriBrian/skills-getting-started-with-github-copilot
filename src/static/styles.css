@@ -167,8 +167,9 @@ footer {
 }
 
 /* list: keep it scrollable but show bullets via a custom marker so avatar + bullet don't overlap */
+
 .participants {
-  list-style: none; /* we render a custom bullet for consistent appearance across browsers */
+  list-style: none;
   padding: 0;
   margin: 0;
   max-height: 160px;
@@ -184,22 +185,31 @@ footer {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 8px 8px 46px; /* left padding reserves room for the bullet */
+  padding: 8px 8px 8px 16px; /* less left padding, no bullet */
   border-radius: 6px;
   background: rgba(58, 81, 255, 0.03);
 }
 
 /* custom bullet marker (acts as the list 'bullet') */
 .participant-item::before {
-  content: '•';
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #3949ab;
+  display: none;
+}
+/* Style for delete icon button */
+.delete-participant {
+  background: none;
+  border: none;
+  color: #c62828;
   font-size: 18px;
-  line-height: 1;
-  opacity: 0.95;
+  margin-left: 8px;
+  cursor: pointer;
+  vertical-align: middle;
+  padding: 0 4px;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+.delete-participant:hover {
+  background: #ffeaea;
+  color: #a31515;
 }
 
 /* avatar remains as-is but now sits to the right of the bullet */
